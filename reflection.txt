@@ -1,0 +1,24 @@
+1. Correctness
+
+    I think what makes a CSV parser correct is what it does for the user, regardless 
+    of what's happening behind the scenes. Put simply, it should output a result that
+    the user wants, consistently, and throw detailed errors. It should automatically 
+    detect if there is a schema and adjust the output according. It should trim 
+    whitespace, handle double quotes and internal commas, handle uneven numbers of columns,
+    and have sensible rules on types. For example, if a column should be a number (like age),
+    it should check that the data in that field can be converted to a number, even if the 
+    output should still be of type string. If there is no schema inputted, it should output
+    a string[][]. If there is a schema, it should output T[]. Errors (my preference) should
+    be objects with an error message, the location of the error, and maybe an ok: true/false.
+
+2. 
+    I would first look at multiple instances of what was generated and make note of how the 
+    CSV data varies. For example, one random generation could feature data types I have not 
+    accounted for yet, and another could feature multi-line strings with \n. I would focus
+    on one CSV generation at a time and account for each new piece of functionality that 
+    would be needed to properly parse it. I would then make a test for that CSV data so that
+    I can re-run it each time I test, ensuring that when I focus on a new CSV generation, I
+    don't undo fixes for the previous one. 
+
+3. 
+    It wasn't too different and I didn't encounter any bugs! Overall a great learning experience.
