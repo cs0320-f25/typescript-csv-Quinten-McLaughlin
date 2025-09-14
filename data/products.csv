@@ -1,0 +1,3 @@
+product_name,id,price,in_stock
+shampoo,001,9.99,true
+body wash,002,10.99,false
